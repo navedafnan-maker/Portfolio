@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naved Afnan Research Portfolio</title>
+<meta name="description" content="Naved Afnan, Research Intern at TRACE Consulting. Field surveys, cost-benefit analysis and policy research on trade, livelihoods and markets in Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a researcher's lab notebook as a set of live panels. Big grotesk headings, mono for every figure, each panel does something when touched. */
+:root{
+  --paper:#f3f4f8;
+  --surface:#ffffff;
+  --ink:#10142a;
+  --muted:#5a6079;
+  --rule:#dcdfea;
+  --accent:#2f47e6;
+  --accent-soft:#e3e7fd;
+  --mark:#e2552d;
+  --on-accent:#ffffff;
+  --display:"Bricolage Grotesque","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1020;--surface:#161a30;--ink:#eceefa;--muted:#a0a6c2;--rule:#2a3050;
+    --accent:#8b9bff;--accent-soft:#222a55;--mark:#ff8a66;--on-accent:#0d1020;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1020;--surface:#161a30;--ink:#eceefa;--muted:#a0a6c2;--rule:#2a3050;
+  --accent:#8b9bff;--accent-soft:#222a55;--mark:#ff8a66;--on-accent:#0d1020;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r)}
+
+/* progress + top bar */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--mark);z-index:10}
+.top{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:0;z-index:5}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.top .id{font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.top nav{display:flex;gap:6px;flex-wrap:wrap;font-size:14px;align-items:center}
+.top nav a{color:var(--muted);text-decoration:none;padding:4px 10px;border-radius:999px}
+.top nav a:hover{color:var(--ink)}
+.top nav a.on{background:var(--ink);color:var(--paper)}
+#theme{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:4px 12px;font-family:var(--mono);font-size:12px}
+#theme:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 260px;gap:48px;align-items:center;padding:56px 0 40px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:999px;margin:0 0 18px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--mark)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(46px,8vw,88px);line-height:.98;letter-spacing:-.03em;margin:0 0 20px;text-wrap:balance}
+.lede{font-size:20px;line-height:1.5;max-width:58ch;margin:0 0 22px}
+.lede b{font-weight:600;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.keywords{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 26px}
+.keywords li{font-size:13px;padding:4px 11px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:999px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:none}
+.btn.p{background:var(--ink);color:var(--paper)}
+.btn:hover{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
+.portrait{margin:0;transform:rotate(2deg)}
+.portrait img{display:block;width:100%;aspect-ratio:288/385;object-fit:cover;border-radius:var(--r);border:1px solid var(--rule);box-shadow:10px 10px 0 var(--accent-soft)}
+.portrait figcaption{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:16px;line-height:1.5}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:8px}
+.stats div{padding:18px 20px}
+.stats b{display:block;font-family:var(--display);font-weight:700;font-size:40px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats span{font-size:13.5px;color:var(--muted)}
+
+/* sections */
+section{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:44px 0;border-top:1px solid var(--rule);scroll-margin-top:60px}
+.sec-top{border-top:0}
+h2{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:6px 0 0}
+h2 i{display:block;font-style:normal;color:var(--mark)}
+h3{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-.01em;margin:0 0 4px;text-wrap:balance}
+.meta{font-size:14px;color:var(--muted);margin:0 0 10px}
+.body p{max-width:66ch;margin:0 0 12px}
+.body ul,.panel ul{max-width:66ch;margin:0;padding-left:18px}
+.body li,.panel li{margin-bottom:6px}
+.stack{display:grid;gap:30px}
+.n{font-family:var(--mono);font-size:13px;color:var(--mark)}
+
+/* ask */
+.ask{padding:22px}
+.qs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{font-size:14px;padding:6px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink)}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.answer{font-size:18px;line-height:1.55;min-height:6.2em;margin:0;max-width:64ch}
+.answer::after{content:"";display:inline-block;width:8px;height:1.05em;background:var(--mark);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.answer::after{animation:none}}
+
+/* profile + OLS */
+.two{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+.lab{padding:16px}
+.lab canvas{display:block;width:100%;height:230px;border-radius:8px;background:var(--paper);cursor:crosshair;touch-action:manipulation}
+.lab .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.eq{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.small{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.mini{font-family:var(--mono);font-size:12px;border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:3px 11px}
+.mini:hover{border-color:var(--accent);color:var(--accent)}
+
+/* research */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters .label{margin:0 6px 0 0}
+.count{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-left:auto}
+.papers{display:grid;gap:14px}
+details.paper{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r)}
+details.paper[open]{border-color:var(--accent)}
+details.paper summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:start;border-radius:var(--r)}
+details.paper summary::-webkit-details-marker{display:none}
+details.paper summary .meta{margin:0;grid-column:1}
+details.paper summary .abs{grid-column:1;margin:4px 0 0;max-width:62ch;font-size:15px}
+.tog{grid-row:1;grid-column:2;font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;padding-top:6px}
+.tog::after{content:"Open brief +"}
+details[open] .tog::after{content:"Close brief \2212"}
+.brief{padding:18px 22px 22px;display:grid;gap:18px;border-top:1px solid var(--rule)}
+.brief dl{display:grid;grid-template-columns:120px 1fr;gap:10px 18px;margin:0;max-width:680px}
+.brief dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.brief dd{margin:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.findings,.sim{background:var(--paper);border-radius:10px;padding:16px 18px;display:grid;gap:12px;align-content:start}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+button.bar-row{display:grid;grid-template-columns:1fr 64px;gap:6px 12px;align-items:center;font-size:14px;width:100%;background:none;border:0;padding:6px 8px;margin:0 -8px;border-radius:6px;text-align:left}
+button.bar-row .name{grid-column:1/-1}
+button.bar-row:hover,button.bar-row[aria-pressed="true"]{background:var(--accent-soft)}
+.track{position:relative;height:10px;background:var(--accent-soft);border-radius:3px;display:block}
+button.bar-row:hover .track,button.bar-row[aria-pressed="true"] .track{background:var(--surface)}
+.fill{position:absolute;top:0;bottom:0;background:var(--accent);border-radius:3px}
+button.bar-row[aria-pressed="true"] .fill{background:var(--mark)}
+.val{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px;text-align:right}
+.scale{display:grid;grid-template-columns:1fr 64px;gap:12px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.scale div{display:flex;justify-content:space-between}
+.note{font-size:14px;margin:0;min-height:3.2em}
+.sim input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+.sim .ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end;height:120px}
+.col{display:grid;grid-template-rows:1fr auto;gap:6px;height:100%;text-align:center;font-size:12.5px;color:var(--muted)}
+.col .bar{align-self:end;background:var(--accent);border-radius:4px 4px 0 0;position:relative;transition:height .25s}
+.col.off .bar{background:var(--mark)}
+.col .bar em{position:absolute;top:-22px;left:0;right:0;font-style:normal;font-family:var(--mono);font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.sim .out{font-size:14.5px;margin:0}
+
+/* workflow */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.step{border:0;background:none;padding:14px 12px;text-align:left;border-right:1px solid var(--rule);display:grid;gap:2px}
+.step:last-child{border-right:0}
+.step i{font-family:var(--mono);font-style:normal;font-size:11.5px;color:var(--muted)}
+.step b{font-family:var(--display);font-size:18px;font-weight:700}
+.step:hover{background:var(--accent-soft)}
+.step[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.step[aria-selected="true"] i{color:var(--on-accent)}
+.panel{padding:18px 22px;margin-top:12px}
+.panel p{margin:0 0 10px;max-width:66ch}
+.hint{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:10px 0 0}
+
+/* experience etc */
+.job{padding:20px 22px;display:grid;gap:12px}
+.firm{border-left:3px solid var(--mark);padding:2px 0 2px 14px;color:var(--muted);font-size:14.5px;max-width:66ch}
+.firm p{margin:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid2>div{padding:18px 20px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.tags li{font-size:14px;padding:4px 11px;background:var(--accent-soft);border-radius:999px;margin:0}
+.contact-card{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-card div{padding:18px 20px;overflow-wrap:anywhere}
+.contact-card a{font-size:17px}
+footer{border-top:1px solid var(--rule);padding:24px 0 40px;font-size:13px;color:var(--muted)}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:28px;padding:32px 0}
+  .portrait{max-width:190px;order:-1}
+  section{grid-template-columns:1fr;gap:14px;padding:34px 0}
+  .stats{grid-template-columns:1fr 1fr}
+  .two,.pair,.grid2,.contact-card{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid var(--rule);grid-template-columns:28px 1fr;align-items:baseline}
+  .step:last-child{border-bottom:0}
+  .brief dl{grid-template-columns:1fr;gap:2px 0}
+  .brief dd{margin-bottom:10px}
+  details.paper summary{grid-template-columns:1fr}
+  .tog{grid-row:auto;grid-column:1}
+  .count{margin-left:0;width:100%}
+  .top nav a{padding:4px 7px}
+}
+
+/* v2 additions: chart tokens, explorers, CBA tiles, welfare diagram, TRACE fit */
+:root{--s1:#2f47e6;--s2:#e2552d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s1:#7083f2;--s2:#df6c47}}
+:root[data-theme="dark"]{--s1:#7083f2;--s2:#df6c47}
+.fill{background:var(--s1)}
+button.bar-row[aria-pressed="true"] .fill{background:var(--s2)}
+.col .bar{background:var(--s1)}.col.off .bar{background:var(--s2)}
+.ex{background:var(--paper);border-radius:10px;padding:16px 18px;display:grid;gap:12px;align-content:start}
+.ex .sets{display:flex;flex-wrap:wrap;gap:6px}
+.ex .sets .chip{font-size:12.5px;padding:4px 11px;background:var(--surface)}
+.ex .sets .chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.ex .rows{display:grid;gap:2px}
+.ex button.bar-row{grid-template-columns:1fr 92px}
+.ex .fill{border-radius:0 4px 4px 0}
+.ex .track{background:none;border-left:1px solid var(--rule);border-radius:0}
+.ex button.bar-row:hover .track,.ex button.bar-row[aria-pressed="true"] .track{background:none}
+.ex .src{font-size:12.5px;color:var(--muted);margin:0}
+.wide{grid-column:1/-1}
+.seg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.seg .cap{margin-right:4px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 12px}
+.tile span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tile b{display:block;font-family:var(--display);font-size:22px;line-height:1.25;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cmp{display:grid;gap:8px}
+.cmp .r{display:grid;grid-template-columns:76px 1fr 96px;gap:10px;align-items:center;font-size:13.5px}
+.cmp .t{height:14px;border-left:1px solid var(--rule)}
+.cmp .t i{display:block;height:100%;border-radius:0 4px 4px 0;transition:width .25s}
+.cmp .r.b .t i{background:var(--s1)}.cmp .r.c .t i{background:var(--s2)}
+.cmp .v{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.verdict{font-size:14.5px;margin:0;min-height:4.6em}
+canvas.plot{display:block;width:100%;height:260px;border-radius:8px;background:var(--surface);border:1px solid var(--rule)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fit>div{background:var(--paper);border-radius:10px;padding:14px 16px}
+.fit p{margin:0 0 8px}
+.kv{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.projlinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.projlinks a{font-family:var(--mono);font-size:12px;text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:3px 11px;background:var(--surface)}
+.projlinks a:hover{border-color:var(--accent)}
+.lab .row .btns{display:flex;gap:6px;flex-wrap:wrap}
+@media (max-width:820px){.tiles{grid-template-columns:1fr 1fr}.fit{grid-template-columns:1fr}.cmp .r{grid-template-columns:64px 1fr 88px}}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="id" href="#top">Naved Afnan</a>
+    <nav aria-label="Sections">
+      <a href="#ask">Ask</a>
+      <a href="#research">Research</a>
+      <a href="#trace">TRACE fit</a>
+      <a href="#method">Workflow</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" type="button">Dark mode</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <p class="kicker"><span class="dot"></span>Research Intern · TRACE Consulting · Dhaka</p>
+      <h1>Naved Afnan</h1>
+      <p class="lede">Economics researcher in the making. I <b>collect primary data</b> in the field, test it with <b>cost-benefit and statistical analysis</b>, and turn it into <b>evidence for policy</b> on trade, livelihoods and markets in Bangladesh.</p>
+      <ul class="keywords" aria-label="Research interests">
+        <li>Trade policy</li>
+        <li>Development economics</li>
+        <li>Cost-benefit analysis</li>
+        <li>Field survey design</li>
+        <li>Blue economy</li>
+        <li>Urban economics</li>
+      </ul>
+      <div class="cta">
+        <a class="btn p" href="#research">See my research</a>
+        <a class="btn" href="#trace">How it fits TRACE</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="data:image/jpeg;base64,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" alt="Portrait of Naved Afnan" width="288" height="385">
+      <figcaption>BSS in Economics, East West University<br>Wari, Dhaka, Bangladesh</figcaption>
+    </figure>
+  </div>
+
+  <div class="stats" aria-label="Fieldwork in numbers">
+    <div class="card"><b data-to="4">4</b><span>research and field projects</span></div>
+    <div class="card"><b data-to="35">35</b><span>coastal shop operators interviewed in Kuakata</span></div>
+    <div class="card"><b data-to="69">69</b><span>Dhaka South residents surveyed on safety</span></div>
+    <div class="card"><b data-to="200" data-pre="~">~200</b><span>customers surveyed for market research</span></div>
+  </div>
+
+  <section id="ask" class="sec-top">
+    <h2><i>01</i>Ask me</h2>
+    <div class="card ask">
+      <div class="qs" role="group" aria-label="Quick questions">
+        <button class="chip" type="button" aria-pressed="true">What do you research?</button>
+        <button class="chip" type="button" aria-pressed="false">What have you found?</button>
+        <button class="chip" type="button" aria-pressed="false">How does it fit TRACE?</button>
+        <button class="chip" type="button" aria-pressed="false">Which tools do you use?</button>
+        <button class="chip" type="button" aria-pressed="false">Where do you work?</button>
+        <button class="chip" type="button" aria-pressed="false">What are you studying?</button>
+      </div>
+      <p class="answer" id="answer" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2><i>02</i>Profile</h2>
+    <div class="two">
+      <div class="body">
+        <p>I am a Research Intern in the Research &amp; Policy Development team at TRACE Consulting, a Dhaka-based research and advisory firm for trade, economic policy and regulatory reform. I am also finishing a BSS in Economics at East West University.</p>
+        <p>My academic work gave me three habits I use every day: asking the people a policy affects, putting numbers on costs and benefits, and writing the result so a decision maker can act on it. The projects below cover a coastal market, a renewable energy subsidy and a city's safety.</p>
+        <p>I like questions that start in the field: who pays the rent, who loses income in the off-season, who would switch fuel if credit were available, and why.</p>
+      </div>
+      <div class="card lab">
+        <p class="label">Try it: fit a regression line</p>
+        <canvas id="ols" aria-label="Scatter plot of simulated points with a fitted regression line. Click to add a point."></canvas>
+        <div class="row">
+          <span class="eq" id="eq" aria-live="polite"></span>
+          <span class="btns">
+            <button class="mini" type="button" id="outlier">Add outlier</button>
+            <button class="mini" type="button" id="undo">Undo</button>
+            <button class="mini" type="button" id="reset">New sample</button>
+          </span>
+        </div>
+        <p class="small">Click or tap the plot to add an observation and the least-squares line refits. Add an outlier to see how one point moves the slope and R². The points are simulated, not survey data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2><i>03</i>Research &amp; field projects</h2>
+    <div class="stack" style="gap:18px">
+      <div class="filters" role="group" aria-label="Filter projects by theme">
+        <p class="label">Theme</p>
+        <button class="chip f" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="chip f" type="button" data-f="livelihoods" aria-pressed="false">Livelihoods</button>
+        <button class="chip f" type="button" data-f="energy" aria-pressed="false">Energy &amp; CBA</button>
+        <button class="chip f" type="button" data-f="urban" aria-pressed="false">Urban safety</button>
+        <button class="chip f" type="button" data-f="gender" aria-pressed="false">Gender &amp; jobs</button>
+        <span class="count" id="count" aria-live="polite">Showing 4 of 4</span>
+      </div>
+
+      <div class="papers">
+        <details class="paper" data-t="livelihoods" id="p-kuakata" open>
+          <summary>
+            <h3>Socio-economic and livelihood assessment of shop operators in Kuakata</h3>
+            <span class="tog" aria-hidden="true"></span>
+            <p class="meta">Livelihoods · Blue economy · Primary survey · <span class="n">n = 35</span> · 2026</p>
+            <p class="abs">A field study of how rent, seasonality and credit shape the earnings of general, dry fish and ethnic shops on the Kuakata coast, and how each depends on the ocean.</p>
+          </summary>
+          <div class="brief">
+            <dl>
+              <dt>Context</dt><dd>ECO355 Blue Economics, East West University. Prepared for Dr. A. K. Enamul Haque, Director General, BIDS.</dd>
+              <dt>Role</dt><dd>Group supervision, original draft of the report, visualisation, and shared data curation and formal analysis in a team of three.</dd>
+              <dt>Method</dt><dd>Face-to-face structured interviews on 27–28 March 2026 with 15 general, 12 dry fish and 8 ethnic shops, then descriptive statistics.</dd>
+              <dt>Policy</dt><dd>Low-interest credit for tourism-dependent micro-enterprises, storage for dry fish, links to certified fisheries, branding and packaging, and digital payments (only 20% of shops accept mobile banking).</dd>
+            </dl>
+            <div class="pair">
+              <div class="ex" data-ex="kuakata"></div>
+              <div class="sim">
+                <p class="cap">What the seasonal drop means</p>
+                <label class="small" for="drop" style="margin:0">Move within the range the survey found: <span class="mono" id="dropv">60%</span></label>
+                <input type="range" id="drop" min="50" max="70" step="1" value="60">
+                <div class="ends"><span>50%</span><span>70%</span></div>
+                <div class="cols" aria-hidden="true">
+                  <div class="col"><div class="bar" style="height:78%"><em>Tk 100</em></div><span>Peak season</span></div>
+                  <div class="col off"><div class="bar" id="offbar" style="height:31%"><em id="offv">Tk 40</em></div><span>Off-season</span></div>
+                </div>
+                <p class="out" id="simout" aria-live="polite"></p>
+                <p class="small" style="margin:0">Reported shop income: Tk 35,000–50,000 a month in peak season (Nov–Jan) against Tk 10,000–20,000 in the off-season (Apr–Sep).</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="paper" data-t="energy" id="p-shs">
+          <summary>
+            <h3>Benefits to lighting: a cost-benefit analysis of solar home systems in Bangladesh</h3>
+            <span class="tog" aria-hidden="true"></span>
+            <p class="meta">Energy &amp; CBA · Policy review and presentation · ECO485</p>
+            <p class="abs">When does a rural household gain from switching kerosene lamps for a solar home system, and when does cheap credit push it towards diesel instead?</p>
+          </summary>
+          <div class="brief">
+            <dl>
+              <dt>Context</dt><dd>ECO485, East West University. Presented to Dr. A. K. Enamul Haque in a team of three. Based on the study in <em>Bangladesh Priorities</em>, Vol. 1.</dd>
+              <dt>Method</dt><dd>Reviewed and presented the cost-benefit model: 20-year panel life, battery replaced every 5 years, 15% down payment with 85% micro-credit, and a $25 subsidy per unit. Three switching cases, at 3%, 5% and 10% discount rates.</dd>
+              <dt>Finding</dt><dd>Solar pays for households at any discount rate up to about 15.7% if micro-credit is available. Diesel sharing has a far higher benefit-cost ratio, so unrestricted credit can pull households towards diesel.</dd>
+            </dl>
+            <div class="pair">
+              <div class="ex" id="cba">
+                <p class="cap">Benefit-cost explorer</p>
+                <div class="seg" role="group" aria-label="Switching case">
+                  <button class="chip" type="button" data-case="0" aria-pressed="true">Kerosene → Solar</button>
+                  <button class="chip" type="button" data-case="1" aria-pressed="false">Kerosene → Diesel</button>
+                  <button class="chip" type="button" data-case="2" aria-pressed="false">Diesel → Solar</button>
+                </div>
+                <div class="seg" role="group" aria-label="Social discount rate">
+                  <span class="cap">Discount rate</span>
+                  <button class="chip" type="button" data-rate="0" aria-pressed="false">3%</button>
+                  <button class="chip" type="button" data-rate="1" aria-pressed="true">5%</button>
+                  <button class="chip" type="button" data-rate="2" aria-pressed="false">10%</button>
+                </div>
+                <div class="cmp" aria-hidden="true">
+                  <div class="r b"><span>Benefits</span><span class="t"><i id="cb"></i></span><span class="v" id="cbv"></span></div>
+                  <div class="r c"><span>Costs</span><span class="t"><i id="cc"></i></span><span class="v" id="ccv"></span></div>
+                </div>
+                <div class="tiles" style="grid-template-columns:1fr 1fr">
+                  <div class="tile"><span>Net benefit</span><b id="cnet"></b></div>
+                  <div class="tile"><span>Benefit-cost ratio</span><b id="cbcr"></b></div>
+                </div>
+                <p class="verdict" id="cverdict" aria-live="polite"></p>
+                <p class="src">Total social benefits and costs, present value in Tk, as reported in the study. Negative values in brackets.</p>
+              </div>
+              <div class="ex">
+                <p class="cap">Welfare of switching: consumer surplus</p>
+                <canvas class="plot" id="welfare" aria-label="Demand diagram for lighting hours, comparing consumer surplus under kerosene and under electric lighting at an adjustable price."></canvas>
+                <div class="legend"><span><i style="background:var(--s2)"></i>Surplus with kerosene</span><span><i style="background:var(--s1)"></i>Surplus with electric light</span></div>
+                <label class="small" for="ps" style="margin:0">Price of electric light: <span class="mono" id="psv"></span> per hour</label>
+                <input type="range" id="ps" min="1" max="10" step="0.01" value="4.59" style="width:100%;accent-color:var(--accent);margin:0">
+                <div class="seg">
+                  <button class="mini" type="button" data-ps="4.59">Solar: Tk 4.59</button>
+                  <button class="mini" type="button" data-ps="1.84">Diesel: Tk 1.84</button>
+                </div>
+                <p class="verdict" id="wout" aria-live="polite" style="min-height:3.2em"></p>
+                <p class="src">Prices per lighting hour are from the study (kerosene Tk 3.22). The two demand curves are illustrative, drawn to show the logic of the welfare test.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="paper" data-t="urban" id="p-dscc">
+          <summary>
+            <h3>Security profile of Dhaka South City Corporation</h3>
+            <span class="tog" aria-hidden="true"></span>
+            <p class="meta">Urban safety · Resident survey and police interview · <span class="n">n = 69</span> · 2025</p>
+            <p class="abs">How residents of Dhaka South experience crime, what they think causes it, and where their view matches that of the police.</p>
+          </summary>
+          <div class="brief">
+            <dl>
+              <dt>Context</dt><dd>ECO480 Urban Economics, East West University. Submitted to Dr. Biva Arani Mallik, May 2025, in a team of four.</dd>
+              <dt>Role</dt><dd>Surveyor and report co-author.</dd>
+              <dt>Method</dt><dd>Online questionnaire shared with residents across DSCC areas, with 69 responses, plus a key-informant interview with an Additional Deputy Commissioner at Dhaka Metropolitan Police Headquarters.</dd>
+              <dt>Finding</dt><dd>Residents and the police both point to unemployment as a root cause. 77.9% of respondents see street children as at risk of being drawn into crime, and low trust in the police keeps crimes unreported.</dd>
+            </dl>
+            <div class="pair">
+              <div class="ex wide" data-ex="dscc"></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="paper" data-t="gender" id="p-gender">
+          <summary>
+            <h3>Women empowerment initiative: a framework for formal job access</h3>
+            <span class="tog" aria-hidden="true"></span>
+            <p class="meta">Gender &amp; jobs · Framework development</p>
+            <p class="abs">An analysis of what keeps low-income women out of formal work, turned into a structured pathway to formal jobs.</p>
+          </summary>
+          <div class="brief">
+            <dl>
+              <dt>Role</dt><dd>Analyst and framework developer.</dd>
+              <dt>Method</dt><dd>Analysis of economic barriers for low-income women and mapping of skilling gaps.</dd>
+              <dt>Output</dt><dd>A structured framework for access to formal employment.</dd>
+              <dt>Link</dt><dd>The Kuakata survey shows the same gap in the field: 55% of women shop operators have primary education or less, and they are concentrated in the lower-income ethnic shops.</dd>
+            </dl>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="trace">
+    <h2><i>04</i>Where my work meets TRACE</h2>
+    <div>
+      <div class="body"><p>TRACE Consulting works across nine practice areas. Select one to see what the firm does there and what I bring to it from my academic projects.</p></div>
+      <div class="steps" id="fit-tabs" role="tablist" aria-label="TRACE practice areas" style="margin-top:14px">
+        <button class="step" type="button" role="tab"><i>01</i><b>Research</b></button>
+        <button class="step" type="button" role="tab"><i>02</i><b>Policy reform</b></button>
+        <button class="step" type="button" role="tab"><i>03</i><b>Market access</b></button>
+        <button class="step" type="button" role="tab"><i>04</i><b>Cold chain</b></button>
+        <button class="step" type="button" role="tab"><i>05</i><b>Trade facilitation</b></button>
+      </div>
+      <div class="card panel" id="fit-panel" role="tabpanel" aria-live="polite"></div>
+      <p class="hint">The left column describes the firm's published practice areas. The right column is my own academic work, not TRACE project work.</p>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2><i>05</i>Research workflow</h2>
+    <div>
+      <div class="steps" id="wf-tabs" role="tablist" aria-label="Research workflow steps">
+        <button class="step" type="button" role="tab"><i>01</i><b>Design</b></button>
+        <button class="step" type="button" role="tab"><i>02</i><b>Collect</b></button>
+        <button class="step" type="button" role="tab"><i>03</i><b>Structure</b></button>
+        <button class="step" type="button" role="tab"><i>04</i><b>Analyse</b></button>
+        <button class="step" type="button" role="tab"><i>05</i><b>Recommend</b></button>
+      </div>
+      <div class="card panel" id="wf-panel" role="tabpanel" aria-live="polite"></div>
+      <p class="hint">Tip: use the left and right arrow keys to move between steps.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2><i>06</i>Experience</h2>
+    <div class="stack" style="gap:14px">
+      <article class="card job">
+        <div>
+          <h3>Research Intern</h3>
+          <p class="meta">TRACE Consulting · Research &amp; Policy Development · Dhaka · Present</p>
+        </div>
+        <div class="body"><p>Supporting research on trade policy and regulatory assessment, with a focus on strategic research, programme coordination and data assessment.</p></div>
+        <div class="firm">
+          <p><strong>About the firm.</strong> TRACE Consulting Limited is a Dhaka-based research and advisory firm for trade, economic policy, regulatory reform and development projects. Its nine practice areas run from trade facilitation, policy and regulatory reform and market access and SPS compliance to laboratory improvement, cold chain logistics, technology solutions, and research and innovation. Its clients and partners include the National Board of Revenue, the Ministry of Commerce, the Ministry of Agriculture, BSTI and the World Bank. <a href="https://traceconsultingltd.com/">traceconsultingltd.com</a></p>
+        </div>
+      </article>
+      <article class="card job">
+        <div>
+          <h3>Market Research Contributor</h3>
+          <p class="meta">X Ceramics Group · <span class="n">n ≈ 200</span></p>
+        </div>
+        <div class="body"><ul>
+          <li>Coordinated primary field surveys with nearly 200 customers on product preferences and purchasing behaviour.</li>
+          <li>Structured the raw field data into analytical reports that informed executive management's strategic decisions.</li>
+        </ul></div>
+      </article>
+      <article class="card job">
+        <div>
+          <h3>Logistics &amp; Operations Volunteer</h3>
+          <p class="meta">East West University</p>
+        </div>
+        <div class="body"><ul>
+          <li>Led event logistics and crowd management for university field trips and programmes.</li>
+          <li>Managed supplies, catering logistics and volunteer teams, with every delivery on time.</li>
+        </ul></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><i>07</i>Education &amp; skills</h2>
+    <div class="stack" style="gap:14px">
+      <article class="card job" id="education">
+        <div>
+          <h3>Bachelor of Social Science in Economics</h3>
+          <p class="meta">East West University, Dhaka · June 2022 to present · CGPA <span class="n">3.29 / 4.00</span></p>
+        </div>
+        <div>
+          <p class="label">Relevant coursework</p>
+          <ul class="tags"><li>Microeconomics</li><li>Macroeconomics</li><li>Urban Economics (ECO480)</li><li>Blue Economics (ECO355)</li><li>Cost-benefit analysis (ECO485)</li><li>Development Economics</li><li>Public Finance</li></ul>
+        </div>
+      </article>
+      <div class="grid2">
+        <div class="card">
+          <p class="label">Technical</p>
+          <ul class="tags"><li>Stata</li><li>Excel</li><li>Field survey design</li><li>Structured interviews</li><li>Cost-benefit analysis</li><li>Descriptive statistics</li><li>Data visualisation</li><li>Report writing</li><li>PowerPoint</li><li>Canva</li><li>AI prompting</li></ul>
+        </div>
+        <div class="card">
+          <p class="label">Professional</p>
+          <ul class="tags"><li>Critical thinking</li><li>Team supervision</li><li>Event operations &amp; leadership</li><li>Communication</li><li>Problem solving</li><li>Adaptability</li></ul>
+        </div>
+      </div>
+      <div class="card job body">
+        <p class="label" style="margin:0">Certifications &amp; achievements</p>
+        <ul>
+          <li>STATA 5.0 Professional Training Certification, East West University</li>
+          <li>Workplace Communication Essentials, Passport to Earning, UNICEF</li>
+          <li>Runner-up, Intra Photography Competition, Notre Dame College</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><i>08</i>Contact</h2>
+    <div class="stack" style="gap:14px">
+      <div class="contact-card">
+        <div class="card"><p class="label">Email</p><a href="mailto:navedafnan@gmail.com">navedafnan@gmail.com</a><br><button class="mini" type="button" id="copy" style="margin-top:10px">Copy email</button></div>
+        <div class="card"><p class="label">LinkedIn</p><a href="https://www.linkedin.com/in/naved-afnan-49a66a36b/">linkedin.com/in/naved-afnan</a></div>
+      </div>
+      <div class="body"><p>Academic references from the Department of Economics, East West University, are available on request.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Naved Afnan · Research Intern, TRACE Consulting · Wari, Dhaka, Bangladesh</div></footer>
+
+<script>
+(function(){
+  var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var id=function(x){return document.getElementById(x)};
+  var el=function(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root=document.documentElement;
+  var redraw=[];
+  function drawAll(){redraw.forEach(function(f){f()})}
+  function tok(n){return getComputedStyle(root).getPropertyValue(n).trim()}
+  function tk(v){var a=Math.abs(Math.round(v)).toLocaleString('en-US');return v<0?'(Tk '+a+')':'Tk '+a}
+
+  /* theme */
+  var tb=id('theme');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+  function label(){tb.textContent=isDark()?'Light mode':'Dark mode'}
+  try{var saved=localStorage.getItem('na-theme');if(saved)root.setAttribute('data-theme',saved)}catch(e){}
+  label();
+  tb.addEventListener('click',function(){var t=isDark()?'light':'dark';root.setAttribute('data-theme',t);try{localStorage.setItem('na-theme',t)}catch(e){}label();drawAll()});
+
+  /* ask */
+  var A=[
+    'I study how people earn a living and what gets in the way. So far: coastal shop operators in Kuakata and their rent and seasonal income, the costs and benefits of solar home systems for rural households, safety in Dhaka South, and the barriers that keep low-income women out of formal jobs.',
+    'In Kuakata, 65% of 35 shop operators named high rent as a major challenge and income falls 50 to 70% in the off-season. For solar home systems, benefits are 1.67 times costs at a 5% discount rate. In Dhaka South, 60.9% of 69 residents blamed poor law enforcement and 59.4% unemployment.',
+    'TRACE works on trade, market access and policy reform. My Kuakata study looked at a dry fish supply chain and its storage and quality problems, my solar project was a cost-benefit test of a subsidy, and all my projects rest on primary surveys. Those are the methods the Research & Policy Development team uses.',
+    'Stata for statistical analysis, Excel for structuring data and descriptive statistics, and survey design to get good data in the first place. I present results with data visualisation, PowerPoint and Canva.',
+    'I am a Research Intern in the Research & Policy Development team at TRACE Consulting, a Dhaka-based research and advisory firm working on trade, economic policy and regulatory reform.',
+    'A Bachelor of Social Science in Economics at East West University, Dhaka, since June 2022. Coursework includes micro, macro, urban, blue and development economics, cost-benefit analysis and public finance.'
+  ];
+  var ans=id('answer'),qs=$('.qs .chip'),timer;ans.textContent=A[0];
+  qs.forEach(function(c,i){c.addEventListener('click',function(){
+    qs.forEach(function(x){x.setAttribute('aria-pressed',x===c)});
+    clearInterval(timer);
+    if(calm){ans.textContent=A[i];return}
+    var k=0;ans.textContent='';
+    timer=setInterval(function(){k+=3;ans.textContent=A[i].slice(0,k);if(k>=A[i].length)clearInterval(timer)},16);
+  })});
+
+  /* OLS playground */
+  var cv=id('ols'),cx=cv.getContext('2d'),pts=[],eq=id('eq');
+  function sample(){pts=[];var b=0.35+Math.random()*0.4,a=0.12+Math.random()*0.15;for(var i=0;i<14;i++){var x=0.08+Math.random()*0.84;pts.push([x,Math.max(0.04,Math.min(0.96,a+b*x+(Math.random()-0.5)*0.3))])}}
+  function fit(){var n=pts.length,sx=0,sy=0,sxx=0,sxy=0,syy=0;pts.forEach(function(p){sx+=p[0];sy+=p[1];sxx+=p[0]*p[0];sxy+=p[0]*p[1];syy+=p[1]*p[1]});
+    var d=n*sxx-sx*sx;if(n<2||Math.abs(d)<1e-9)return null;var b=(n*sxy-sx*sy)/d,a=(sy-b*sx)/n,vy=n*syy-sy*sy;var r2=vy<1e-9?0:Math.pow(n*sxy-sx*sy,2)/(d*vy);return{a:a,b:b,r2:r2,n:n}}
+  function setup(c,g){var w=c.clientWidth,h=c.clientHeight,dpr=window.devicePixelRatio||1;if(!w)return null;c.width=w*dpr;c.height=h*dpr;g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);return{w:w,h:h}}
+  function draw(){
+    var s=setup(cv,cx);if(!s)return;var w=s.w,h=s.h;
+    var m=14,X=function(x){return m+x*(w-2*m)},Y=function(y){return h-m-y*(h-2*m)};
+    cx.strokeStyle=tok('--rule');cx.lineWidth=1;
+    for(var g=0;g<=4;g++){cx.beginPath();cx.moveTo(X(0),Y(g/4));cx.lineTo(X(1),Y(g/4));cx.stroke()}
+    var f=fit();
+    if(f){
+      cx.strokeStyle=tok('--muted');cx.setLineDash([2,3]);
+      pts.forEach(function(p){cx.beginPath();cx.moveTo(X(p[0]),Y(p[1]));cx.lineTo(X(p[0]),Y(f.a+f.b*p[0]));cx.stroke()});
+      cx.setLineDash([]);cx.save();cx.beginPath();cx.rect(m,m,w-2*m,h-2*m);cx.clip();
+      cx.strokeStyle=tok('--s2');cx.lineWidth=2.5;cx.beginPath();cx.moveTo(X(0),Y(f.a));cx.lineTo(X(1),Y(f.a+f.b));cx.stroke();cx.restore();
+      eq.textContent='ŷ = '+f.a.toFixed(2)+(f.b<0?' − ':' + ')+Math.abs(f.b).toFixed(2)+'x   R² = '+f.r2.toFixed(2)+'   n = '+f.n;
+    }else eq.textContent='Add at least two points';
+    cx.fillStyle=tok('--s1');
+    pts.forEach(function(p){cx.beginPath();cx.arc(X(p[0]),Y(p[1]),4.5,0,6.283);cx.fill()});
+  }
+  cv.addEventListener('click',function(e){var r=cv.getBoundingClientRect(),m=14;
+    var x=(e.clientX-r.left-m)/(r.width-2*m),y=1-(e.clientY-r.top-m)/(r.height-2*m);
+    if(x<0||x>1||y<0||y>1)return;pts.push([x,y]);draw()});
+  id('reset').addEventListener('click',function(){sample();draw()});
+  id('undo').addEventListener('click',function(){pts.pop();draw()});
+  id('outlier').addEventListener('click',function(){var f=fit();var hi=f&&f.b>0;pts.push([0.9+Math.random()*0.06,hi?0.06+Math.random()*0.06:0.9+Math.random()*0.06]);draw()});
+  sample();redraw.push(draw);
+
+  /* filter */
+  var papers=$('.paper'),chips=$('.chip.f'),count=id('count');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    var f=c.dataset.f,n=0;
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c)});
+    papers.forEach(function(p){var on=f==='all'||p.dataset.t===f;p.hidden=!on;if(on)n++;if(f!=='all'&&on)p.open=true});
+    count.textContent='Showing '+n+' of '+papers.length;drawAll();
+  })});
+  papers.forEach(function(p){p.addEventListener('toggle',drawAll)});
+
+  /* survey explorers: every figure is from the project reports */
+  var EX={
+    kuakata:{src:'Kuakata field survey, 27–28 March 2026, n = 35.',sets:[
+      {name:'Challenges',unit:'%',cap:'Share of operators naming each challenge. More than one answer allowed.',rows:[
+        ['High rent costs',65,'High rent is the most common complaint. Average rent is Tk 9,500 a month and shops near the beach pay more.'],
+        ['Seasonal income fluctuation',60,'Income falls 50 to 70% in the off-season, April to September.'],
+        ['Lack of working capital',50,'Half of the operators lack working capital to stock up before the peak season.'],
+        ['Competition from other shops',45,'Many shops sell similar products to the same tourists.'],
+        ['Limited access to bank loans',40,'Four in ten cannot reach formal credit, which is why the report recommends low-interest loans.'],
+        ['Poor roads in monsoon',35,'Monsoon road conditions cut both supply and tourist arrivals.'],
+        ['Sourcing quality products',25,'A quarter struggle to source quality products, especially authentic ethnic goods.']]},
+      {name:'Income by shop type',unit:'tk',cap:'Typical monthly net income by shop type.',rows:[
+        ['Dry fish shops',38000,'Dry fish shops earn the most. They depend directly on marine fisheries and face raw fish price swings and storage losses.'],
+        ['General shops',25000,'General shops sit in the middle, selling groceries, clothing and beach items to tourists.'],
+        ['Ethnic shops',18000,'Ethnic shops earn the least, though with higher margins on tourist items. Most women operators run these shops.']]},
+      {name:'Shop income spread',unit:'%',cap:'Share of shops by monthly net income. Mean Tk 28,500, median Tk 22,500.',rows:[
+        ['Below Tk 10,000',14,'About one in seven shops earns under Tk 10,000 a month.'],
+        ['Tk 10,000–20,000',29,'Close to a third earn Tk 10,000 to 20,000.'],
+        ['Tk 20,001–35,000',31,'The largest group earns Tk 20,001 to 35,000.'],
+        ['Tk 35,001–50,000',14,'One in seven earns Tk 35,001 to 50,000.'],
+        ['Above Tk 50,000',12,'A small top group earns above Tk 50,000, which pulls the mean above the median.']]},
+      {name:'Best sales days',unit:'%',cap:'Share of operators naming each day among their best. More than one answer allowed.',rows:[
+        ['Friday',74,'Friday is the best day for three in four shops, driven by weekend tourists.'],
+        ['Saturday',57,'Saturday follows, as weekend visitors stay on.'],
+        ['Thursday',23,'Thursday picks up early arrivals.'],
+        ['Sunday',11,'Sales fall quickly after the weekend.'],
+        ['Other weekdays',6,'Few shops count on weekday sales.']]}]},
+    dscc:{src:'DSCC resident survey, May 2025, n = 69.',sets:[
+      {name:'Perceived causes',unit:'%',cap:'What residents think causes crime in their area. More than one answer allowed.',rows:[
+        ['Poor law enforcement',60.9,'The most cited cause. The police officer interviewed named winning public trust as the force\'s biggest challenge.'],
+        ['Unemployment',59.4,'Residents and the police agree here: the officer called unemployment the primary cause of the cases he sees.'],
+        ['Drug abuse',55.1,'More than half of respondents link crime to drug abuse.'],
+        ['Lack of education',46.4,'Nearly half point to lack of education.']]},
+      {name:'Feeling safe',unit:'%',cap:'Do you feel safe in your neighbourhood?',rows:[
+        ['Feel safe',52.2,'Just over half feel safe, which matches the police view that crime had fallen from the year before.'],
+        ['Do not feel safe',24.6,'A quarter do not feel safe in their own neighbourhood.'],
+        ['Not sure',23.2,'Almost a quarter could not say either way.']]},
+      {name:'Crime trend',unit:'%',cap:'Is the crime situation in your area improving or getting worse?',rows:[
+        ['Getting worse',30.4,'The largest group thinks crime is getting worse, even though the police report a fall.'],
+        ['About the same',29.0,'Close to three in ten see no change.'],
+        ['Improving',21.7,'About one in five sees improvement.'],
+        ['Not sure',18.8,'The rest are unsure.']]},
+      {name:'Types of crime',unit:'%',cap:'Most common type of crime reported by respondents. Shares as reported, so they do not add to 100.',rows:[
+        ['Theft',79.7,'Theft dominates. Most respondents also said crime happens after sunset.'],
+        ['Drug dealing',4.3,'Drug dealing is a distant second as the main crime.'],
+        ['Gang activity',2.9,'Few respondents name gang activity as the main crime.'],
+        ['Harassment',1.4,'Harassment is rarely named as the main crime.']]}]}
+  };
+  $('.ex[data-ex]').forEach(function(box){
+    var d=EX[box.dataset.ex];
+    var sets=el('div','sets');sets.setAttribute('role','group');sets.setAttribute('aria-label','Choose a question');
+    var cap=el('p','cap'),rows=el('div','rows'),note=el('p','note'),src=el('p','src',d.src+' Select a bar for the reading.');
+    note.setAttribute('aria-live','polite');
+    box.appendChild(sets);box.appendChild(cap);box.appendChild(rows);box.appendChild(note);box.appendChild(src);
+    var btns=d.sets.map(function(s,i){var b=el('button','chip',s.name);b.type='button';b.addEventListener('click',function(){show(i)});sets.appendChild(b);return b});
+    function show(i){var s=d.sets[i];btns.forEach(function(b,k){b.setAttribute('aria-pressed',k===i)});
+      cap.textContent=s.cap;rows.innerHTML='';
+      var max=s.unit==='%'?100:Math.max.apply(null,s.rows.map(function(r){return r[1]}));
+      var rs=s.rows.map(function(r,k){
+        var b=el('button','bar-row');b.type='button';
+        b.appendChild(el('span','name',r[0]));
+        var t=el('span','track'),f=el('span','fill');f.style.left='0';f.style.width=(100*r[1]/max)+'%';t.appendChild(f);b.appendChild(t);
+        b.appendChild(el('span','val',s.unit==='%'?r[1]+'%':tk(r[1])));
+        var pick=function(){rs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});note.textContent=r[2]};
+        b.addEventListener('click',pick);b.addEventListener('mouseenter',pick);b.addEventListener('focus',pick);
+        rows.appendChild(b);return b});
+      rs[0].setAttribute('aria-pressed','true');rs.slice(1).forEach(function(x){x.setAttribute('aria-pressed','false')});note.textContent=s.rows[0][2];
+    }
+    show(0);
+  });
+
+  /* seasonal slider */
+  var drop=id('drop');
+  function sim(){var d=+drop.value,off=100-d;id('dropv').textContent=d+'%';id('offv').textContent='Tk '+off;id('offbar').style.height=(78*off/100)+'%';
+    id('simout').textContent='For every Tk 100 a shop earns in peak season, it earns about Tk '+off+' in the off-season.'}
+  drop.addEventListener('input',sim);sim();
+
+  /* CBA explorer: total social benefits and costs from the study, PV in Tk, at 3%, 5%, 10% */
+  var CBA=[
+    {b:[47535.6,38783.1,24995.4],c:[24174.5,23176.8,18912.5],n:[23361.0,15606.2,6082.8],r:[1.97,1.67,1.32],
+     v:function(i){return 'Every taka spent returns Tk '+this.r[i].toFixed(2)+'. The ratio falls as the discount rate rises, and solar stays worthwhile for households up to a rate of about 15.7%, provided micro-credit is available.'}},
+    {b:[115241.28,105146.55,71833.68],c:[5133.25,4374.82,3191.71],n:[110108.03,100771.73,68641.97],r:[22.45,24.03,22.51],
+     v:function(i){return 'Sharing a diesel generator returns Tk '+this.r[i].toFixed(2)+' per taka, far above solar. That is the risk: unrestricted micro-credit may pull households to diesel, which costs the world $216.68 per household at 3% and $49.01 at 5% in emissions.'}},
+    {b:[-67705.72,-66363.49,-46838.31],c:[107551.83,3098.50,5289.92],n:[-175257.54,-69461.99,-52128.23],r:[null,null,null],
+     v:function(i){return 'A household already on diesel loses by moving to solar, so none would invest unaided. The gain is global: each $1 of subsidy returns '+(i===0?'$8.71 at this rate.':i===1?'$1.97 at this rate.':'$8.71 at 3% and $1.97 at 5%. The study does not report a global figure at 10%.')}}
+  ];
+  var cs=0,cr=1,caseB=$('#cba [data-case]'),rateB=$('#cba [data-rate]');
+  function cba(){var d=CBA[cs],b=d.b[cr],c=d.c[cr],max=Math.max(Math.abs(b),Math.abs(c));
+    caseB.forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.case===cs)});rateB.forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.rate===cr)});
+    id('cb').style.width=(b>0?100*b/max:0)+'%';id('cc').style.width=(c>0?100*c/max:0)+'%';
+    id('cbv').textContent=tk(b);id('ccv').textContent=tk(c);id('cnet').textContent=tk(d.n[cr]);
+    id('cbcr').textContent=d.r[cr]==null?'No investment':d.r[cr].toFixed(2);id('cverdict').textContent=d.v(cr)}
+  caseB.forEach(function(x){x.addEventListener('click',function(){cs=+x.dataset.case;cba()})});
+  rateB.forEach(function(x){x.addEventListener('click',function(){cr=+x.dataset.rate;cba()})});
+  cba();
+
+  /* welfare diagram: illustrative linear demand curves, study prices */
+  var wc=id('welfare'),wx=wc.getContext('2d'),ps=id('ps'),PK=3.22;
+  var Dk={a:8,b:2},De={a:12,b:1.5}; /* P = a - bQ */
+  function csur(D,p){return p>=D.a?0:0.5*(D.a-p)*(D.a-p)/D.b}
+  function welfare(){
+    var p=+ps.value;id('psv').textContent='Tk '+p.toFixed(2);
+    var k=csur(Dk,PK),e=csur(De,p),gain=e>k;
+    id('wout').textContent=(gain?'Welfare gain. ':'Welfare loss. ')+'At Tk '+p.toFixed(2)+' an hour the household buys '+Math.max(0,(De.a-p)/De.b).toFixed(1)+' hours of electric light against '+((Dk.a-PK)/Dk.b).toFixed(1)+' hours of kerosene light, and its surplus is '+(e/k).toFixed(1)+' times the kerosene surplus. Switching pays only while the electric-light area is larger than the kerosene one.';
+    var s=setup(wc,wx);if(!s)return;var w=s.w,h=s.h,L=38,R=12,T=12,B=40,QM=8.5,PM=12.5;
+    var X=function(q){return L+q/QM*(w-L-R)},Y=function(v){return h-B-v/PM*(h-T-B)};
+    var ink=tok('--ink'),mu=tok('--muted'),s1=tok('--s1'),s2=tok('--s2');
+    wx.font='11px '+tok('--mono');wx.lineWidth=1;
+    /* surplus areas */
+    wx.globalAlpha=.28;wx.fillStyle=s1;wx.beginPath();wx.moveTo(X(0),Y(De.a));wx.lineTo(X(0),Y(Math.min(p,De.a)));wx.lineTo(X(Math.max(0,(De.a-p)/De.b)),Y(Math.min(p,De.a)));wx.closePath();wx.fill();
+    wx.globalAlpha=.42;wx.fillStyle=s2;wx.beginPath();wx.moveTo(X(0),Y(Dk.a));wx.lineTo(X(0),Y(PK));wx.lineTo(X((Dk.a-PK)/Dk.b),Y(PK));wx.closePath();wx.fill();wx.globalAlpha=1;
+    /* axes */
+    wx.strokeStyle=mu;wx.beginPath();wx.moveTo(X(0),Y(PM));wx.lineTo(X(0),Y(0));wx.lineTo(X(QM),Y(0));wx.stroke();
+    wx.fillStyle=mu;wx.textAlign='right';wx.textBaseline='middle';[0,4,8,12].forEach(function(v){wx.fillText(v,L-6,Y(v))});
+    wx.textAlign='center';wx.textBaseline='top';[2,4,6,8].forEach(function(q){wx.fillText(q,X(q),h-B+5)});
+    wx.fillText('Lighting hours per day',X(QM/2),h-13);
+    wx.save();wx.translate(10,Y(PM/2));wx.rotate(-Math.PI/2);wx.fillText('Tk per hour',0,-4);wx.restore();
+    /* demand curves */
+    wx.lineWidth=2;wx.strokeStyle=s2;wx.beginPath();wx.moveTo(X(0),Y(Dk.a));wx.lineTo(X(Dk.a/Dk.b),Y(0));wx.stroke();
+    wx.strokeStyle=s1;wx.beginPath();wx.moveTo(X(0),Y(De.a));wx.lineTo(X(De.a/De.b),Y(0));wx.stroke();
+    /* price lines */
+    wx.lineWidth=1;wx.setLineDash([4,3]);wx.strokeStyle=ink;
+    wx.beginPath();wx.moveTo(X(0),Y(PK));wx.lineTo(X((Dk.a-PK)/Dk.b),Y(PK));wx.stroke();
+    if(p<De.a){wx.beginPath();wx.moveTo(X(0),Y(p));wx.lineTo(X((De.a-p)/De.b),Y(p));wx.stroke()}
+    wx.setLineDash([]);
+    /* direct labels */
+    wx.fillStyle=ink;wx.textAlign='left';wx.textBaseline='bottom';
+    wx.textBaseline='middle';var nar=w<330,lk=nar?'Kerosene':'Demand: kerosene',le=nar?'Electric':'Demand: electric light';wx.fillText(lk,Math.min(X(3.55),w-R-wx.measureText(lk).width),Y(0.9));
+    wx.fillText(le,Math.min(X(3.45),w-R-wx.measureText(le).width),Y(7.7));
+    wx.textBaseline='middle';
+    var qk=(Dk.a-PK)/Dk.b;wx.fillText('Pk 3.22',X(qk)+6,Y(PK));
+    if(p<De.a){var qe=(De.a-p)/De.b,ly=Y(p);if(Math.abs(ly-Y(PK))<12&&Math.abs(X(qe)-X(qk))<60)ly+=p>PK?-10:10;wx.fillText('Ps '+p.toFixed(2),Math.min(X(qe)+6,w-R-52),ly)}
+  }
+  ps.addEventListener('input',welfare);
+  $('[data-ps]').forEach(function(b){b.addEventListener('click',function(){ps.value=b.dataset.ps;welfare()})});
+  redraw.push(welfare);
+
+  /* tabs: TRACE fit and workflow */
+  function tabs(tabSel,panel,render){var steps=$(tabSel+' .step'),cur=0;
+    function show(i){cur=i;steps.forEach(function(s,k){s.setAttribute('aria-selected',k===i);s.tabIndex=k===i?0:-1});panel.innerHTML='';render(i,panel)}
+    steps.forEach(function(s,i){s.addEventListener('click',function(){show(i)});
+      s.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(!d)return;e.preventDefault();var n=(cur+d+steps.length)%steps.length;show(n);steps[n].focus()})});
+    show(0)}
+  function list(items){var ul=el('ul');items.forEach(function(t){ul.appendChild(el('li',null,t))});return ul}
+
+  var FIT=[
+    ['Research & Innovation','In-depth trade, economic and development research, training and policy research. This is the practice my team, Research & Policy Development, supports.',
+     ['Three primary-data projects: structured interviews, an online survey and a key-informant interview.','Questionnaire design covering income, assets, business operations and perceptions.','Descriptive statistics and charts turned into written findings.'],[['Kuakata survey','#p-kuakata'],['DSCC survey','#p-dscc']]],
+    ['Policy & Regulatory Reform','Evidence-based policy and legislative reform for government agencies, including World Bank-financed work on repurposing agricultural public support.',
+     ['Cost-benefit analysis of a subsidy and credit design: who pays, who gains, and at which discount rate.','Reading unintended effects, such as cheap credit steering households to diesel.','Recommendations written by audience: operators, local government, development organisations.'],[['Solar CBA','#p-shs'],['Kuakata survey','#p-kuakata']]],
+    ['Market Access & SPS Compliance','Helping agricultural and fisheries exporters meet international requirements through compliance, quality assurance, traceability and resilient supply chains.',
+     ['Mapped the dry fish supply chain from fishermen and processors to retail.','Documented quality problems: humidity, pests and monsoon quality control.','Recommended links between dry fish shops and certified fisheries, with branding and packaging for higher-value sales.'],[['Kuakata survey','#p-kuakata']]],
+    ['Temperature-Controlled Logistics','Cold chain advisory from production to distribution, to keep temperature and quality consistent.',
+     ['Found storage and preservation to be a core constraint for dry fish shops.','Recommended storage facilities so shops can cut spoilage and buy in low-price seasons.','Noted electricity shortages that affect refrigeration in general shops.'],[['Kuakata survey','#p-kuakata']]],
+    ['Trade Facilitation','Customs modernization, faster border clearance and lower trade costs, including a Time Release Study at key custom houses for NBR and the World Bank.',
+     ['Field measurement discipline: clear units, structured instruments and honest sample sizes.','Experience interviewing officials as key informants as well as surveying users.','Market research with nearly 200 customers, structured into reports for management.'],[['DSCC survey','#p-dscc']]]
+  ];
+  tabs('#fit-tabs',id('fit-panel'),function(i,panel){var f=FIT[i],g=el('div','fit'),a=el('div'),b=el('div');
+    a.appendChild(el('p','label','TRACE practice area'));a.appendChild(el('h3',null,f[0]));a.appendChild(el('p',null,f[1]));
+    b.appendChild(el('p','label','What I bring from my academic work'));b.appendChild(list(f[2]));
+    var pl=el('div','projlinks');f[3].forEach(function(l){var x=el('a',null,l[0]+' ↑');x.href=l[1];x.addEventListener('click',function(){var t=document.querySelector(l[1]);if(t){t.hidden=false;t.open=true;setTimeout(drawAll,60)}});pl.appendChild(x)});b.appendChild(pl);
+    g.appendChild(a);g.appendChild(b);panel.appendChild(g)});
+
+  var S=[
+    ['I start from the question and decide who needs to be asked and how.',['Kuakata: a structured questionnaire on demographics, income, assets, business operations, seasonality and challenges.','Dhaka South: an online form for residents, paired with a police interview to hear the other side.']],
+    ['I collect the data from the people the question is about.',['35 shop operators in Kuakata, interviewed face to face over two days.','69 Dhaka South residents through an online survey.','Nearly 200 customers, for X Ceramics Group market research.']],
+    ['Raw field answers are messy. I clean and organise them before any analysis.',['Shared data curation for the Kuakata survey.','At X Ceramics Group I structured raw field data into analytical reports for executive management.']],
+    ['I analyse the structured data and look for the numbers that explain the situation.',['Descriptive statistics: 65% of Kuakata operators cite high rent and income falls 50 to 70% off-season.','Cost-benefit analysis: present values, benefit-cost ratios and discount rates for solar home systems.','STATA 5.0 Professional Training Certification, East West University.']],
+    ['Analysis ends in something a decision maker can use.',['Credit, storage and branding recommendations for coastal micro-enterprises.','A warning that unrestricted micro-credit can favour diesel over solar.','Short-term and long-term safety measures for Dhaka South, from patrols to jobs for young people.','A structured framework for low-income women to reach formal jobs.']]
+  ];
+  tabs('#wf-tabs',id('wf-panel'),function(i,panel){panel.appendChild(el('p',null,S[i][0]));panel.appendChild(list(S[i][1]))});
+
+  /* count-up: numbers are visible from the start, this only animates them */
+  if(!calm){$('.stats b[data-to]').forEach(function(e){var to=+e.dataset.to,pre=e.dataset.pre||'',t0=null;
+    function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/900);e.textContent=pre+Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}
+    requestAnimationFrame(f)})}
+
+  /* copy email */
+  var cp=id('copy');
+  cp.addEventListener('click',function(){var done=function(m){cp.textContent=m;setTimeout(function(){cp.textContent='Copy email'},1800)};
+    try{navigator.clipboard.writeText('navedafnan@gmail.com').then(function(){done('Copied')},function(){done('Select the address to copy')})}catch(e){done('Select the address to copy')}});
+
+  /* redraw canvases on layout or theme change */
+  drawAll();addEventListener('resize',drawAll);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawAll);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){label();drawAll()});
+  new MutationObserver(function(){label();drawAll()}).observe(root,{attributes:true,attributeFilter:['data-theme']});
+
+  /* nav highlight + progress */
+  var links=$('.top nav a'),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}),prog=id('prog');
+  function spy(){var y=scrollY+150,c=-1;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)c=i});links.forEach(function(a,i){a.classList.toggle('on',i===c)});
+    var max=document.documentElement.scrollHeight-innerHeight;prog.style.width=(max>0?100*scrollY/max:0)+'%'}
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</body>
+</html>
